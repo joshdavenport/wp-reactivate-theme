@@ -81,7 +81,7 @@ class WP_ReactivateTheme {
                         <h3>Created by</h3>
                         <h2>Josh Davenport</h2>
                         <p>
-                            <a href="http://profiles.wordpress.org/joshdavenport/">Profile</a>
+                            <a href="http://profiles.wordpress.org/josh-davenport/">Profile</a>
                             &nbsp;&nbsp;
                             <a href="http://www.joshdavenport.co.uk/">Website</a>
                         </p>
@@ -94,13 +94,9 @@ class WP_ReactivateTheme {
     }
 
     function get_current_theme_data() {
-        if (function_exists('wp_get_theme')){
-            $theme = wp_get_theme(get_stylesheet());
-        } else {
-            $theme = (object) get_theme_data(get_stylesheet_directory() . '/style.css');
-        }
+        $theme = wp_get_theme(get_stylesheet());
 
-        if (!$theme->exists() || ! $theme->is_allowed()) {
+        if (!$theme->exists() || !$theme->is_allowed()) {
             return false;
         }
 
@@ -143,4 +139,5 @@ function reactivatetheme_init() {
     global $reactivate_theme;
     $reactivate_theme = new WP_ReactivateTheme();
 }
+
 add_action('init', 'reactivatetheme_init');

@@ -94,7 +94,11 @@ class WP_ReactivateTheme {
     }
 
     function get_current_theme_data() {
-        $theme = wp_get_theme(get_stylesheet());
+        if (function_exists('wp_get_theme')){
+            $theme = wp_get_theme(get_stylesheet());
+        } else {
+            $theme = (object) get_theme_data(get_stylesheet_directory() . '/style.css');
+        }
 
         if (!$theme->exists() || ! $theme->is_allowed()) {
             return false;

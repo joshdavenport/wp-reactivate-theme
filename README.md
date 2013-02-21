@@ -1,4 +1,4 @@
-wp-reactivate-theme
+Reactivate Theme
 ===================
 
 WordPress plugin that can reactivate the current theme.

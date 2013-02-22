@@ -34,6 +34,8 @@ class WP_ReactivateTheme {
     function __construct() {
         // add menu item
         add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+        // enqueue assets
+        $this->admin_assets();
 
         // stop anything further from happening unless we're on our tools_page
         if ( !isset( $_GET['page'] ) || self::page_slug != $_GET['page'] )
@@ -54,13 +56,18 @@ class WP_ReactivateTheme {
         }
     }
 
+    function admin_assets() {
+        $styles_src = plugins_url('css/styles.css', __FILE__);
+        wp_enqueue_style( 'reactivatetheme-admin-styles', $styles_src );
+    }
+
     function reactivate_page() {
         ?>
     <div class="wrap">
         <div id="icon-tools" class="icon32"><br></div>
         <h2>Reactivate Theme</h2>
-        <div id="wpmdb-container">
-            <div id="wpmdb-main">
+        <div id="rt-container">
+            <div id="rt-main">
                 <?php if($this->get_current_template() && $this->get_current_stylesheet()): ?>
                 <p class="hidden"><?php echo $this->get_current_template() ?></p>
                 <p class="hidden"><?php echo $this->get_current_stylesheet() ?></p>
@@ -74,7 +81,7 @@ class WP_ReactivateTheme {
                 <p><?php _e('Template:', 'reactivate_theme') ?> <?php var_dump($this->get_current_stylesheet()) ?></p>
                 <?php endif;?>
             </div>
-            <div id="wpmdb-sidebar">
+            <div id="rt-sidebar">
                 <div class="author">
                     <img src="http://www.gravatar.com/avatar/c55bd9279032b4dfd1057746c55ba129?s=128&amp;d" width="64" height="64">
                     <div class="desc">

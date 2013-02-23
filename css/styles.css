@@ -1,0 +1,54 @@
+#rt-container {
+    position: relative;
+}
+
+#rt-main {
+    margin-right: 320px;
+    min-height: 1200px;
+}
+
+#rt-sidebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+#rt-sidebar .author {
+    overflow: hidden;
+}
+
+#rt-sidebar .author img {
+    float: left;
+    margin-right: 20px;
+}
+
+#rt-sidebar .author .desc {
+    float: left;
+}
+
+#rt-sidebar .author h3 {
+    font-size: 12px;
+    margin: 0;
+}
+
+#rt-sidebar .author h2 {
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+#rt-sidebar .author h2 a {
+    color: #464646;
+    text-decoration: none;
+}
+
+#rt-sidebar .author h2 a:hover {
+    color: #000;
+}
+
+#rt-sidebar .author p {
+    margin: 0;
+}
